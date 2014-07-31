@@ -17,7 +17,6 @@
         <module>cache</module>
         <module>gc-dao</module>
         <module>profile</module>
-        <module>rasdaman-config</module>
         <module>sqlite-config</module>
         <module>test</module>
     </modules>
