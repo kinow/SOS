@@ -50,6 +50,7 @@ import org.n52.sos.exception.ConfigurationException;
  * Hibernate datasource implementation for Rasdaman databases.
  * 
  * @author Carsten Hollmann <c.hollmann@52north.org>
+ * @author Simona Badoiu <s.a.badoiu@52north.org>
  * 
  * @since 4.0.0
  *
@@ -65,12 +66,12 @@ public class RasdamanDatasource extends AbstractHibernateFullDBDatasource {
     protected static final String USERNAME_DESCRIPTION =
             "Your database server user name. The default value for ASQLDB is \"SA\".";
 
-    protected static final String USERNAME_DEFAULT_VALUE = "SIMONA";
+    protected static final String USERNAME_DEFAULT_VALUE = "SA";
 
     protected static final String PASSWORD_DESCRIPTION =
             "Your database server password. The default value is \"\".";
 
-    protected static final String PASSWORD_DEFAULT_VALUE = "SIMONA";
+    protected static final String PASSWORD_DEFAULT_VALUE = "";
 
     protected static final String HOST_DESCRIPTION =
             "Set this to the IP/net location of ASQLDB database server. The default value for ASQLDB is \"localhost\".";
@@ -189,10 +190,16 @@ public class RasdamanDatasource extends AbstractHibernateFullDBDatasource {
         } catch (ClassNotFoundException ex) {
             throw new SQLException(ex);
         }*/
+//    	String pass = (String) settings.get(HibernateConstants.CONNECTION_PASSWORD);
+//        String user = (String) settings.get(HibernateConstants.CONNECTION_USERNAME);
+      
+    	String pass = "";
+    	String user = "SA";
+    	
         Connection conn;
         Properties connectionProps = new Properties();
-        connectionProps.put("user", "SIMONA");
-        connectionProps.put("password", "SIMONA");
+        connectionProps.put("user", user);
+        connectionProps.put("password", pass);
 
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");

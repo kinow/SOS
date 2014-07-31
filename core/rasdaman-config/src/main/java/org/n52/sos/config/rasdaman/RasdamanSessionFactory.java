@@ -99,7 +99,7 @@ public class RasdamanSessionFactory extends AbstractSessionFactoryProvider {
 
     private static final int RASDAMAN_CONNECTION_POOL_SIZE = 1;
 
-    protected static final String CONNECTION_URL_TEMPLATE = "^jdbc:hsqldb:([:/a-zA-Z0-9]*)";
+    protected static final String CONNECTION_URL_TEMPLATE = "jdbc:hsqldb:file:/var/hsqldb/db";
 
     protected static final String DEFAULT_DATABASE_NAME = "db";
 
@@ -118,8 +118,8 @@ public class RasdamanSessionFactory extends AbstractSessionFactoryProvider {
             put(HIBERNATE_UPDATE_SCHEMA, UPDATE_SCHEMA_VALUE);
             put(HIBERNATE_DIALECT, RASDAMAN_HIBERNATE_DIALECT);
             put(HIBERNATE_CONNECTION_DRIVER_CLASS, SQLITE_JDBC_DRIVER);
-            put(HIBERNATE_CONNECTION_USERNAME, EMPTY);
-            put(HIBERNATE_CONNECTION_PASSWORD, EMPTY);
+            put(HIBERNATE_CONNECTION_USERNAME, "SIMONA");
+            put(HIBERNATE_CONNECTION_PASSWORD, "SIMONA");
             put(HIBERNATE_CONNECTION_POOL_SIZE, String.valueOf(RASDAMAN_CONNECTION_POOL_SIZE));
             put(HIBERNATE_CONNECTION_RELEASE_MODE, RELEASE_MODE_AFTER_TRANSACTION);
             put(HIBERNATE_CURRENT_SESSION_CONTEXT, THREAD_LOCAL_SESSION_CONTEXT);
@@ -127,7 +127,7 @@ public class RasdamanSessionFactory extends AbstractSessionFactoryProvider {
     };
 
     protected String getFilename() {
-        String path = null;
+        /*String path = null;
         try {
             path = SosContextListener.getPath();
         } catch (Throwable t) {
@@ -139,7 +139,8 @@ public class RasdamanSessionFactory extends AbstractSessionFactoryProvider {
             path = new File(path).getAbsolutePath();
         }
         path = path + File.separator + DEFAULT_DATABASE_NAME;
-        return String.format(CONNECTION_URL_TEMPLATE, path);
+        return String.format(CONNECTION_URL_TEMPLATE, path);*/
+    	return CONNECTION_URL_TEMPLATE;
     }
 
     private final ReentrantLock lock = new ReentrantLock();

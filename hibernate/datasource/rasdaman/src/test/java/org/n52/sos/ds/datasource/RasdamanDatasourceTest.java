@@ -53,8 +53,8 @@ import junit.framework.TestCase;
 public class RasdamanDatasourceTest extends TestCase {
 	private static final String SOS_TEST_CONF = "SOS_TEST_CONF";
 	private static final String RASDAMAN_SCHEMA = "public";
-	private static final String RASDAMAN_USER = "simona";
-	private static final String RASDAMAN_PASS = "simona";
+	private static final String RASDAMAN_USER = "SIMONA";
+	private static final String RASDAMAN_PASS = "SIMONA";
 //	private static final String RASDAMAN_USER_NO_RIGHTS = "SA";
 //	private static final String RASDAMAN_PASS_NO_RIGHTS = "";
 

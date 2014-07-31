@@ -7,7 +7,6 @@
 		<version>4.0.1</version>
 	</parent>
 	<artifactId>rasdaman-config</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>52°North SOS - Rasdaman Configuration</name>
 	<dependencies>
 		<dependency>

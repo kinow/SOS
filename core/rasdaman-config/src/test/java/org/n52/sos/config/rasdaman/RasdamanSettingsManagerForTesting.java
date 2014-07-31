@@ -26,7 +26,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-package org.n52.sos.config.sqlite;
+package org.n52.sos.config.rasdaman;
 
 import org.n52.sos.config.rasdaman.ExtensionEnabledRasdamanSettingsManager;
 

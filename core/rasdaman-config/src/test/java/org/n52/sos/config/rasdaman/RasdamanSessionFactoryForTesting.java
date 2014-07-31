@@ -26,7 +26,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-package org.n52.sos.config.sqlite;
+package org.n52.sos.config.rasdaman;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,25 +46,14 @@ import org.slf4j.LoggerFactory;
  */
 public class RasdamanSessionFactoryForTesting extends RasdamanSessionFactory {
     private static final Logger LOG = LoggerFactory.getLogger(RasdamanSessionFactoryForTesting.class); 
-    protected static final String TESTING_DATABASE_NAME = "testing-configuration";
+    protected static final String TESTING_DATABASE_NAME = "/var/hsqldb/db";
     protected static final String TESTING_CONNECTION_URL_TEMPLATE = "^jdbc:hsqldb:([:/a-zA-Z0-9]*)";    
     
-    private File dbFile;
+    private String dbFile = "/var/hsqldb/db";
     
     @Override
     protected String getFilename() {
-    	if (dbFile == null) {
-            try {
-            	dbFile = File.createTempFile(TESTING_DATABASE_NAME, ".db");
-            } catch (IOException ioe) {
-            	LOG.warn("Couldn't create testing sqlite config database in temp directory.");
-            }        
-            if (dbFile == null) {
-            	dbFile = new File("target/" + TESTING_DATABASE_NAME + ".db");
-                LOG.warn("Creating testing sqlite config database in target directory.");
-            }    		
-    	}
-        return String.format(TESTING_CONNECTION_URL_TEMPLATE, dbFile.getAbsolutePath());
+        return String.format(TESTING_CONNECTION_URL_TEMPLATE, "jdbc:hsqldb:file:/var/hsqldb/db");
     }
     
     @Override
@@ -94,8 +83,5 @@ public class RasdamanSessionFactoryForTesting extends RasdamanSessionFactory {
     @Override
     public void cleanup() {
     	super.cleanup();
-    	if (dbFile != null && dbFile.exists() && dbFile.canWrite()){
-    		dbFile.delete();
-    	}
     }    
 }
