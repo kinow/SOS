@@ -991,7 +991,7 @@
                 </plugins>
             </build>
         </profile>
-        <!-- ############## Profile to use a existing SQLite configuration ############## -->
+        <!-- ############## Profile to use an existing SQLite configuration ############## -->
         <profile>
             <id>use-default-settings</id>
             <build>

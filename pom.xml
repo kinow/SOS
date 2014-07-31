@@ -34,7 +34,6 @@
         <module>data</module>
         <module>third-party</module>
         <module>webapp</module>
-    <module>rasdaman-config</module>
   </modules>
     <licenses>
         <license>
