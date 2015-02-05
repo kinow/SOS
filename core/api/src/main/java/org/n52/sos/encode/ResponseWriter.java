@@ -30,6 +30,9 @@ package org.n52.sos.encode;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
+
+import org.n52.sos.util.http.MediaType;
 
 /**
  * TODO JavaDoc
@@ -39,7 +42,62 @@ import java.io.OutputStream;
  * @since 4.0.0
  */
 public interface ResponseWriter<T> {
+
+    /**
+     * Get the type this {@link ResponseWriter} supports
+     * 
+     * @return the supported type
+     */
     Class<T> getType();
 
+    /**
+     * Get the current contentType
+     * 
+     * @return the contenType
+     */
+    MediaType getContentType();
+
+    /**
+     * Set the contentType
+     * 
+     * @param contentType
+     *            to set
+     */
+    void setContentType(MediaType contentType);
+
+    /**
+     * Write object t to {@link OutputStream} out
+     * 
+     * @param t
+     *            Object to write
+     * @param out
+     *            {@link OutputStream} to be written to
+     * @throws IOException
+     *             If an error occurs during writing
+     */
     void write(T t, OutputStream out) throws IOException;
+
+    /**
+     * Check if GZip is supported by this writer
+     * 
+     * @param t
+     *            Object to write
+     * @return <code>true</code>, if GZip is supported
+     */
+    boolean supportsGZip(T t);
+
+    /**
+     * Return type specific response headers (e.g. filename for downloadable binary attachments)
+     * 
+     * @return Map of response headers to add to response
+     */
+    Map<String,String> getResponseHeaders(T t);
+    
+    /**
+     * Return content length of written response, or -1 for unknown
+     * 
+     * @return Content length of written response, or -1 for unknown
+     */
+    //TODO return content length in write(T t, OutputStream out) instead?
+    int getContentLength(T t);    
 }
