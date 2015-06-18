@@ -368,7 +368,7 @@ public abstract class AbstractKvpDecoder implements Decoder<AbstractServiceReque
         } else if (times.length == 2) {
             return createTemporalFilterFromValue(value, TimeOperator.TM_During.name(), valueReference);
         } else {
-            throw new InvalidParameterValueException().withMessage("The paramter value '%s' is invalid!", value);
+            throw new InvalidParameterValueException().withMessage("The parameter value '%s' is invalid!", value);
         }
     }
     
@@ -388,7 +388,7 @@ public abstract class AbstractKvpDecoder implements Decoder<AbstractServiceReque
                 ti.setRequestedTimeLength(DateTimeHelper.getTimeLengthBeforeTimeZone(times[0]));
             }
             temporalFilter.setTime(ti);
-        } else if (times.length == 2 & temporalFilter.getOperator().equals(TimeOperator.TM_During)) {
+        } else if (times.length == 2 && temporalFilter.getOperator().equals(TimeOperator.TM_During)) {
             DateTime start = DateTimeHelper.parseIsoString2DateTime(times[0]);
             // check if end time is a full ISO 8106 string
             int timeLength = DateTimeHelper.getTimeLengthBeforeTimeZone(times[1]);
