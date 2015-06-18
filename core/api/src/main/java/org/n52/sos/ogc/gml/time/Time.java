@@ -240,7 +240,7 @@ public abstract class Time implements Comparable<Time>, Serializable {
         if (dateTime != null) {
             return dateTime;
         }
-        if (indeterminateValue != null & TimeIndeterminateValue.now.equals(indeterminateValue)) {
+        if (indeterminateValue != null && TimeIndeterminateValue.now.equals(indeterminateValue)) {
             return new DateTime(DateTimeZone.UTC);
         }
         return null;
