@@ -86,7 +86,7 @@ public class HibernateProcedureDescriptionGeneratorFactoryKeyType implements
 
     @Override
     public String toString() {
-        return String.format("%s[from=%s, to=%s]", getClass().getSimpleName(), getDescriptionFormat());
+        return String.format("%s[from=%s]", getClass().getSimpleName(), getDescriptionFormat());
     }
 
 }
